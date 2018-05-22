@@ -15,7 +15,7 @@
 * limitations under the License.
 */
 
-package org.lineageos.hardware;
+package org.mokee.hardware;
 
 import android.os.SystemProperties;
 
