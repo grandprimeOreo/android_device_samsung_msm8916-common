@@ -28,7 +28,7 @@ INITIAL_COPYRIGHT_YEAR=2017
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-LINEAGE_ROOT="$MY_DIR"/../../..
+MK_ROOT="$MY_DIR"/../../..
 DEVICE_DIR="$MY_DIR"/../$DEVICE
 DEVICE_COMMON_DIR="$MY_DIR"/../$DEVICE_COMMON
 
@@ -45,7 +45,7 @@ if [ -z "$SETUP_DEVICE_COMMON_DIR" ]; then
     SETUP_DEVICE_COMMON_DIR=0
 fi
 
-HELPER="$LINEAGE_ROOT"/vendor/lineage/build/tools/extract_utils.sh
+HELPER="$MK_ROOT"/vendor/mk/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -54,7 +54,7 @@ fi
 
 if [ "$SETUP_DEVICE_COMMON_DIR" -eq 1 ] && [ -s $DEVICE_COMMON_DIR/proprietary-files.txt ]; then
     # Reinitialize the helper for device
-    setup_vendor "$DEVICE_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
+    setup_vendor "$DEVICE_COMMON" "$VENDOR" "$MK_ROOT" true
 
     # Copyright headers and guards
     write_headers "$DEVICES"
@@ -68,7 +68,7 @@ fi
 
 if [ "$SETUP_DEVICE_DIR" -eq 1 ] && [ -s $DEVICE_DIR/proprietary-files.txt ]; then
     # Reinitialize the helper for device
-    setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT"
+    setup_vendor "$DEVICE" "$VENDOR" "$MK_ROOT"
 
     # Copyright headers and guards
     write_headers
@@ -85,7 +85,7 @@ if  [ "$SETUP_BOARD_COMMON_DIR" -eq 1 ]; then
    DEVICE_COMMON=$BOARD_COMMON
 
    # Initialize the helper
-   setup_vendor "$BOARD_COMMON" "$VENDOR" "$LINEAGE_ROOT" true
+   setup_vendor "$BOARD_COMMON" "$VENDOR" "$MK_ROOT" true
 
    # Copyright headers and guards
    write_headers "$DEVICES_ALL"
