@@ -1,6 +1,6 @@
 # CMHW
-BOARD_USES_CYANOGEN_HARDWARE := true
+BOARD_USES_MOKEE_HARDWARE := true
 BOARD_HARDWARE_CLASS +=	\
-	hardware/lineage/lineagehw \
-	hardware/samsung/lineagehw \
-	$(PLATFORM_PATH)/lineagehw
+	hardware/mokee/mkhw" \
+	hardware/samsung/mkhw \
+	$(PLATFORM_PATH)/mkhw
